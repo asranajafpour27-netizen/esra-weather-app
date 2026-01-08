@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اپلیکیشن آب و هوا</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- هدر -->
+        <header class="header">
+            <h1><i class="fas fa-cloud-sun"></i> وضعیت آب و هوا</h1>
+            <p class="subtitle">اطلاعات لحظه‌ای آب و هوای شهرهای ایران</p>
+        </header>
+
+        <!-- بخش جستجو -->
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="city-input" placeholder="نام شهر را وارد کنید (مثال: تهران)">
+                <button id="search-btn">
+                    <i class="fas fa-search"></i> جستجو
+                </button>
+                <button id="location-btn" title="استفاده از موقعیت مکانی">
+                    <i class="fas fa-location-arrow"></i>
+                </button>
+            </div>
+            
+            <div class="popular-cities">
+                <span>شهرهای پرجستجو:</span>
+                <button class="city-btn" data-city="تهران">تهران</button>
+                <button class="city-btn" data-city="مشهد">مشهد</button>
+                <button class="city-btn" data-city="اصفهان">اصفهان</button>
+                <button class="city-btn" data-city="شیراز">شیراز</button>
+                <button class="city-btn" data-city="تبریز">تبریز</button>
+            </div>
+        </div>
+
+        <!-- اطلاعات آب و هوا -->
+        <div class="weather-card" id="weather-card">
+            <div class="loading" id="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>در حال دریافت اطلاعات...</p>
+            </div>
+
+            <div class="weather-info" id="weather-info" style="display: none;">
+                <div class="city-info">
+                    <h2 id="city-name">تهران</h2>
+                    <p id="date-time">پنجشنبه ۲۴ اسفند ۱۴۰۲ - ۱۴:۳۰</p>
+                </div>
+
+                <div class="weather-main">
+                    <div class="temp-section">
+                        <div class="temp-icon">
+                            <i class="fas fa-sun" id="weather-icon"></i>
+                        </div>
+                        <div class="temp-value">
+                            <span id="temperature">۲۱</span>
+                            <span class="temp-unit">°C</span>
+                        </div>
+                        <div class="temp-desc">
+                            <p id="weather-description">آفتابی</p>
+                            <p class="feels-like">احساس: <span id="feels-like">۲۰</span>°C</p>
+                        </div>
+                    </div>
+
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <i class="fas fa-wind"></i>
+                            <div>
+                                <span class="detail-label">سرعت باد</span>
+                                <span id="wind-speed">۱۲ کیلومتر/ساعت</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <div>
+                                <span class="detail-label">رطوبت</span>
+                                <span id="humidity">۴۵٪</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <div>
+                                <span class="detail-label">فشار</span>
+                                <span id="pressure">۱۰۱۳ hPa</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-eye"></i>
+                            <div>
+                                <span class="detail-label">دید</span>
+                                <span id="visibility">۱۰ کیلومتر</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="forecast" id="forecast">
+                    <!-- پیش‌بینی روزهای آینده -->
+                </div>
+
+                <div class="additional-info">
+                    <div class="info-card sunrise">
+                        <i class="fas fa-sun"></i>
+                        <div>
+                            <p>طلوع آفتاب</p>
+                            <p id="sunrise">۰۶:۱۵</p>
+                        </div>
+                    </div>
+                    <div class="info-card sunset">
+                        <i class="fas fa-moon"></i>
+                        <div>
+                            <p>غروب آفتاب</p>
+                            <p id="sunset">۱۸:۴۵</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-message" id="error-message" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>شهر مورد نظر یافت نشد. لطفاً نام شهر را به درستی وارد کنید.</p>
+            </div>
+        </div>
+
+        <!-- آخرین جستجوها -->
+        <div class="recent-searches">
+            <h3><i class="fas fa-history"></i> آخرین جستجوها</h3>
+            <div id="recent-list">
+                <!-- لیست شهرهای جستجو شده -->
+            </div>
+        </div>
+
+        <!-- فوتر -->
+        <footer class="footer">
+            <p>© ۱۴۰۳ - اپلیکیشن آب و هوا | اطلاعات از OpenWeatherMap</p>
+            <div class="theme-toggle">
+                <button id="theme-toggle">
+                    <i class="fas fa-moon"></i> حالت تاریک
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

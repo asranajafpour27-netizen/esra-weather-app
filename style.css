@@ -1,0 +1,708 @@
+/* Reset و تنظیمات اولیه */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: #f0f0f0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.dark-mode .container {
+    background-color: rgba(30, 30, 40, 0.95);
+}
+
+/* هدر */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.dark-mode .header {
+    border-bottom-color: #444;
+}
+
+.header h1 {
+    color: #2575fc;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.dark-mode .header h1 {
+    color: #6a11cb;
+}
+
+.header .subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.dark-mode .header .subtitle {
+    color: #aaa;
+}
+
+/* بخش جستجو */
+.search-container {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .search-container {
+    background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+}
+
+.search-box {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+#city-input {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.dark-mode #city-input {
+    background-color: #333;
+    color: white;
+}
+
+#city-input:focus {
+    outline: none;
+    box-shadow: 0 3px 15px rgba(37, 117, 252, 0.3);
+    transform: translateY(-2px);
+}
+
+#search-btn, #location-btn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+#location-btn {
+    padding: 15px;
+    aspect-ratio: 1;
+}
+
+#search-btn:hover, #location-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(37, 117, 252, 0.4);
+}
+
+#search-btn:active, #location-btn:active {
+    transform: translateY(0);
+}
+
+.popular-cities {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.popular-cities span {
+    color: #555;
+    font-weight: 500;
+}
+
+.dark-mode .popular-cities span {
+    color: #ccc;
+}
+
+.city-btn {
+    padding: 8px 20px;
+    border: 2px solid #2575fc;
+    border-radius: 20px;
+    background: transparent;
+    color: #2575fc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.dark-mode .city-btn {
+    border-color: #6a11cb;
+    color: #6a11cb;
+}
+
+.city-btn:hover {
+    background-color: #2575fc;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.dark-mode .city-btn:hover {
+    background-color: #6a11cb;
+}
+
+/* کارت آب و هوا */
+.weather-card {
+    background: white;
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.dark-mode .weather-card {
+    background: #2a2a3a;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.loading i {
+    font-size: 3rem;
+    color: #2575fc;
+}
+
+.loading p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.dark-mode .loading p {
+    color: #aaa;
+}
+
+/* اطلاعات آب و هوا */
+.city-info {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.dark-mode .city-info {
+    border-bottom-color: #444;
+}
+
+#city-name {
+    font-size: 2.2rem;
+    color: #2575fc;
+    margin-bottom: 10px;
+}
+
+.dark-mode #city-name {
+    color: #6a11cb;
+}
+
+#date-time {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.dark-mode #date-time {
+    color: #aaa;
+}
+
+.weather-main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.temp-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.temp-icon i {
+    font-size: 5rem;
+    color: #ff9500;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.temp-value {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #333;
+    display: flex;
+    align-items: flex-start;
+}
+
+.dark-mode .temp-value {
+    color: #f0f0f0;
+}
+
+.temp-unit {
+    font-size: 2rem;
+    margin-top: 10px;
+}
+
+.temp-desc {
+    text-align: right;
+}
+
+#weather-description {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #2575fc;
+    margin-bottom: 10px;
+}
+
+.dark-mode #weather-description {
+    color: #6a11cb;
+}
+
+.feels-like {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.dark-mode .feels-like {
+    color: #aaa;
+}
+
+/* جزئیات آب و هوا */
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    flex: 1;
+    min-width: 300px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .detail-item {
+    background: linear-gradient(135deg, #3a3a4a 0%, #2a2a3a 100%);
+}
+
+.detail-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.detail-item i {
+    font-size: 1.8rem;
+    color: #2575fc;
+    width: 40px;
+    text-align: center;
+}
+
+.dark-mode .detail-item i {
+    color: #6a11cb;
+}
+
+.detail-label {
+    display: block;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.dark-mode .detail-label {
+    color: #aaa;
+}
+
+.detail-item span:last-child {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.dark-mode .detail-item span:last-child {
+    color: #f0f0f0;
+}
+
+/* پیش‌بینی */
+.forecast {
+    margin: 40px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+    border-radius: 20px;
+}
+
+.dark-mode .forecast {
+    background: linear-gradient(135deg, #3a3a4a 0%, #2a2a3a 100%);
+}
+
+.forecast h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2575fc;
+}
+
+.dark-mode .forecast h3 {
+    color: #6a11cb;
+}
+
+.forecast-days {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.forecast-day {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    min-width: 120px;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .forecast-day {
+    background: #2a2a3a;
+}
+
+.forecast-day:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-day .day-name {
+    font-weight: 700;
+    color: #2575fc;
+    margin-bottom: 10px;
+}
+
+.dark-mode .forecast-day .day-name {
+    color: #6a11cb;
+}
+
+.forecast-day .forecast-icon {
+    font-size: 2rem;
+    color: #ff9500;
+    margin: 10px 0;
+}
+
+.forecast-day .temp-range {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.forecast-day .high {
+    color: #ff6b6b;
+    font-weight: 700;
+}
+
+.forecast-day .low {
+    color: #4d96ff;
+    font-weight: 700;
+}
+
+/* اطلاعات اضافی */
+.additional-info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 30px;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    border-radius: 20px;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.dark-mode .info-card {
+    background: linear-gradient(135deg, #4a3a5a 0%, #3a2a4a 100%);
+}
+
+.sunrise {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+.sunset {
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.dark-mode .sunrise {
+    background: linear-gradient(135deg, #4a3a5a 0%, #3a2a4a 100%);
+}
+
+.dark-mode .sunset {
+    background: linear-gradient(135deg, #3a4a5a 0%, #2a3a4a 100%);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.info-card i {
+    font-size: 2rem;
+    color: #ff9500;
+}
+
+.info-card p:first-child {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.dark-mode .info-card p:first-child {
+    color: #aaa;
+}
+
+.info-card p:last-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.dark-mode .info-card p:last-child {
+    color: #f0f0f0;
+}
+
+/* خطا */
+.error-message {
+    text-align: center;
+    padding: 40px;
+    color: #ff6b6b;
+}
+
+.error-message i {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.error-message p {
+    font-size: 1.2rem;
+}
+
+/* آخرین جستجوها */
+.recent-searches {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.dark-mode .recent-searches {
+    background: linear-gradient(135deg, #3a3a4a 0%, #2a2a3a 100%);
+}
+
+.recent-searches h3 {
+    color: #2575fc;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dark-mode .recent-searches h3 {
+    color: #6a11cb;
+}
+
+#recent-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.recent-item {
+    background: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.dark-mode .recent-item {
+    background: #2a2a3a;
+}
+
+.recent-item:hover {
+    border-color: #2575fc;
+    transform: translateY(-3px);
+}
+
+.dark-mode .recent-item:hover {
+    border-color: #6a11cb;
+}
+
+/* فوتر */
+.footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dark-mode .footer {
+    border-top-color: #444;
+}
+
+.footer p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.dark-mode .footer p {
+    color: #aaa;
+}
+
+.theme-toggle button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .search-box {
+        flex-direction: column;
+    }
+    
+    .weather-main {
+        flex-direction: column;
+    }
+    
+    .weather-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .temp-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .forecast-days {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .forecast-day {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .temp-value {
+        font-size: 3rem;
+    }
+    
+    #search-btn, #location-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+    
+    .popular-cities {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
